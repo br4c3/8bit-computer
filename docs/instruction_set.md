@@ -8,11 +8,36 @@ LDA 10; CMP 11; JNE 6; OUT; HLT
 
 ## Encoding
 
+An `opcode` is the operation code inside an instruction. It tells the CPU which operation to run, such as load, store, add, compare, jump, output, or halt.
+
+An `operand` is the value attached to the opcode. In this project, the operand usually means a RAM address.
+
+```text
+LDA 10
+ |  |
+ |  +-- operand: address 10
+ +----- opcode: load from RAM into A
+```
+
 The base simulator uses one-byte instructions:
 
 ```text
 bits 7-4: opcode
 bits 3-0: operand
+```
+
+For example, this assembly statement:
+
+```asm
+LDA 10
+```
+
+is encoded as:
+
+```text
+0001 1010
+---- ----
+ LDA   10
 ```
 
 The base simulator supports operands from `0` to `15`. The graphic simulator uses a wider two-byte instruction layout so it can address larger RAM locations such as graphic memory at `224` (`0xE0`).

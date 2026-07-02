@@ -15,9 +15,11 @@ This project takes the hardware-first path. Instead of starting from a high-leve
 - [Overview](#overview)
 - [Build Roadmap](#build-roadmap)
 - [Architecture](#architecture)
+- [Deep Dive](#deep-dive)
 - [Circuit Gallery](#circuit-gallery)
 - [Features](#features)
 - [Quick Start](#quick-start)
+- [Instruction Basics](#instruction-basics)
 - [Example](#example)
 - [Documentation](#documentation)
 - [Project Structure](#project-structure)
@@ -69,7 +71,15 @@ flowchart TD
 
 The simulator advances through a clocked fetch-execute cycle. Registers are updated with rising-edge D flip-flop behavior, so values are latched on clock transitions instead of being assigned as direct high-level emulator state.
 
-More detail: [Architecture Notes](./docs/architecture.md) and [Runtime Structure](./docs/runtime.md).
+## Deep Dive
+
+Use these documents when you want to inspect how the computer is wired and how each instruction moves through the CPU:
+
+| Guide | What it explains |
+| --- | --- |
+| [Architecture Notes](./docs/architecture.md) | How gates, registers, RAM, the ALU, bus, decoder, and displays are connected. |
+| [Runtime Structure](./docs/runtime.md) | How the Pygame loop, clock, fetch phase, execute phase, and register updates work. |
+| [Instruction Set](./docs/instruction_set.md) | What an opcode is, how instructions are encoded, and how each mnemonic executes. |
 
 ## Circuit Gallery
 
@@ -144,6 +154,30 @@ Controls:
 - `+`: slow the clock
 - `-`: speed up the clock
 - `Up` / `Down`: navigate memory pages in the graphic simulator
+
+## Instruction Basics
+
+An instruction is the binary command that the CPU fetches from RAM and executes. In this project, each instruction is written as a small assembly mnemonic such as `LDA`, `ADD`, `JNE`, or `OUT`.
+
+An `opcode` is the part of the instruction that tells the CPU what operation to perform. The remaining bits are the operand, usually a RAM address.
+
+```text
+instruction = opcode + operand
+
+LDA 10
+ |  |
+ |  +-- operand: RAM address 10
+ +----- opcode: load RAM into the A register
+```
+
+The base simulator stores each instruction in one byte:
+
+```text
+bits 7-4: opcode
+bits 3-0: operand
+```
+
+For the full opcode table and execution behavior, see [Instruction Set](./docs/instruction_set.md).
 
 ## Example
 
