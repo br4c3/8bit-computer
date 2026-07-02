@@ -1,6 +1,8 @@
 # Circuit image
 result/
 *.png
+!docs/*.png
+!docs/*.gif
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

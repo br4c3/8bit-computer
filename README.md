@@ -50,9 +50,9 @@ The project includes waveform-style visualizations and short demo recordings tha
 
 ### Full System Demo
 
-<video src="./docs/full-system-demo.mp4" autoplay muted loop playsinline controls width="100%">
-  Your browser does not support the video tag.
-</video>
+![Full system demo](./docs/full-system-demo.gif)
+
+[Watch the original MP4](./docs/full-system-demo.mp4)
 
 This is the main demo of the project. It shows the completed 8-bit computer running with display output, tying together the CPU, registers, memory, ALU, control logic, and output path.
 
@@ -62,9 +62,9 @@ This is the main demo of the project. It shows the completed 8-bit computer runn
 
 This trace shows the ALU clock, A and B input buses, opcode lines, ALU output, latched Q output, and status flags. It is useful for checking how arithmetic and logic operations propagate through the simulated 8-bit data path.
 
-<video src="./docs/alu-test.mp4" autoplay muted loop playsinline controls width="100%">
-  Your browser does not support the video tag.
-</video>
+![ALU test demo](./docs/alu-test.gif)
+
+[Watch the original MP4](./docs/alu-test.mp4)
 
 ### D Flip-Flop Timing
 
@@ -110,7 +110,9 @@ Input ---------> |  | Registers     |   |
 │   └── circuit_test.ipynb
 ├── docs/
 │   ├── full-system-demo.mp4
+│   ├── full-system-demo.gif
 │   ├── alu-test.mp4
+│   ├── alu-test.gif
 │   ├── alu-offset-visualization.png
 │   └── d-flip-flop-oscilloscope.png
 ├── README.md
