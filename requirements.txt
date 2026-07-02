@@ -6,3 +6,4 @@ pygame
 
 # Circuit visualization
 graphviz
+jupyter
